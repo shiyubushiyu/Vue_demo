@@ -1,0 +1,36 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 计数器案例 -->
+      <div>Counter:{{counter}}</div>
+      <button @click="counterClick">+1</button>
+    </div>
+    <!-- 本地引入 -->
+    <script src="./lib/vue.js"></script>
+    <script>
+      /* 使用vue */
+      const app = Vue.createApp({
+        /* 定义数据 */
+        data() {
+          return {
+            counter: 0,
+          };
+        },
+        /* 定义方法 */
+        methods: {
+          counterClick() {
+            this.counter++;
+          },
+        },
+      });
+      /* 挂载 */
+      app.mount("#app");
+    </script>
+  </body>
+</html>
