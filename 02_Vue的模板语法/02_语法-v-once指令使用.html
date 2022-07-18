@@ -6,29 +6,23 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <!-- 指令v-once 当前元素和后代元素只会渲染一次 -->
+      <h1 v-once>{{message}}</h1>
+      <button @click="changeMessage">改变message的值</button>
+    </div>
     <script src="../lib/vue.js"></script>
     <script>
       Vue.createApp({
-        template: `
-        <h1>当前计数： {{counter}}</h1>
-        <button @click="increment">+1</button>
-        <button @click="decrement">-1</button>
-        `,
         data() {
           return {
-            counter: 0,
+            message: "hello world",
           };
         },
-        /* 定义方法的地方 */
         methods: {
-          /* 数字增加的方法 */
-          increment() {
-            this.counter++;
-          },
-          /* 数字减少的方法 */
-          decrement() {
-            this.counter--;
+          changeMessage() {
+            this.message = "Hello Vue";
+            console.log(this.message);
           },
         },
       }).mount("#app");

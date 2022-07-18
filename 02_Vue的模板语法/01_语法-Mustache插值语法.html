@@ -7,29 +7,33 @@
   </head>
   <body>
     <div id="app">
+      <!-- 1. 基本使用 -->
       <h1>当前计数： {{counter}}</h1>
-      <button @click="increment">+1</button>
-      <button @click="decrement">-1</button>
+
+      <!-- 2. 表达式 -->
+      <h1>计数双倍： {{counter * 2}}</h1>
+      <h1>展示的信息： {{message.split('，')}}</h1>
+
+      <!-- 3.三元运算符 -->
+      <h1>{{ age >=18? '成年' : '未成年' }}</h1>
+
+      <!-- 4.调用methods中的函数 -->
+      <h1>{{formatData(time)}}</h1>
     </div>
     <script src="../lib/vue.js"></script>
     <script>
       Vue.createApp({
-        /* 当template里面有内容时，渲染template中的内容，没有时，渲染app里面的内容 */
-        template: ``,
         data() {
           return {
             counter: 0,
+            message: "你好啊，李银河！",
+            age: 22,
+            time: 123,
           };
         },
-        /* 定义方法的地方 */
         methods: {
-          /* 数字增加的方法 */
-          increment() {
-            this.counter++;
-          },
-          /* 数字减少的方法 */
-          decrement() {
-            this.counter--;
+          formatData(data) {
+            return "2022-7-17" + data;
           },
         },
       }).mount("#app");

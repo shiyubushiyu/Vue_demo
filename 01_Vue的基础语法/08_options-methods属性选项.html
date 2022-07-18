@@ -6,27 +6,26 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <h1>当前计数： {{counter}}</h1>
+      <button @click="increment">+1</button>
+      <button @click="decrement">-1</button>
+    </div>
     <script src="../lib/vue.js"></script>
     <script>
       Vue.createApp({
-        template: `
-        <h1>当前计数： {{counter}}</h1>
-        <button @click="increment">+1</button>
-        <button @click="decrement">-1</button>
-        `,
         data() {
           return {
             counter: 0,
           };
         },
-        /* 定义方法的地方 */
+        // methods属性是一个对象，用来定义方法，这些方法可以被绑定到模板中，
+        // 在该方法中，我们可以使用this关键字来直接访问data中返回的对象属性
         methods: {
-          /* 数字增加的方法 */
-          increment() {
+          increment: function () {
             this.counter++;
           },
-          /* 数字减少的方法 */
+          // es6写法
           decrement() {
             this.counter--;
           },

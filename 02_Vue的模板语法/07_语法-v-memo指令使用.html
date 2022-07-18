@@ -1,0 +1,43 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 记住一个模板的子树。元素和组件上都可以使用。
+        该指令接收一个固定长度的数组作为依赖值进行记忆比对。
+        如果数组中的每个值都和上次渲染的时候相同，则整个该子树的更新会被跳过 -->
+      <div v-memo="[name]">
+        <!-- 此时这里，只有当修改name的值时，才会重新渲染新的dom -->
+        <div>姓名:{{ name }}</div>
+        <div>年龄:{{ age }}</div>
+        <div>身高:{{ height }}</div>
+      </div>
+      <button @click="updataName">改变name的值</button>
+      <button @click="updataAge">改变age的值</button>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            name: "coder",
+            age: 18,
+            height: 1.88,
+          };
+        },
+        methods: {
+          updataAge() {
+            this.age = 20;
+          },
+          updataName() {
+            this.name = "李银河";
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

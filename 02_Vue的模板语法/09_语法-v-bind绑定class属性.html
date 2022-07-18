@@ -1,0 +1,74 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .active {
+        color: red;
+      }
+      .abc {
+        font-size: 20px;
+      }
+      .cba {
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 1. 普通的绑定方式 -->
+      <div :class="className">{{ message }}</div>
+
+      <!-- 2. 对象绑定 -->
+      <button :class=" isActive ? 'active' : '' " @click="btnClick">
+        我是按钮
+      </button>
+
+      <!-- 动态切换class是否加入： {类（变量）:boolean(true/false)} -->
+      <button :class="{ active: isActive }" @click="btnClick">我的按钮</button>
+
+      <!-- 2.1 对象语法的多个键值对 -->
+      <button
+        :class="{ active: isActive, abc: true, cba: false }"
+        @click="btnClick"
+      >
+        我的按钮
+      </button>
+
+      <!-- 2.3 动态class 和普通class一起使用 -->
+      <button class="cba" :class="getClass()">我的按钮</button>
+
+      <!-- 3. 数组语法的使用 -->
+      <div :class="['abc', 'cba', 'active']">Hello World</div>
+      <div :class="[className, 'active']">Hello World</div>
+      <div :class="[className, 'cba', isActive? 'active': '' ]">
+        Hello World
+      </div>
+      <div :class="[className, 'cba', {active: isActive} ]">Hello World</div>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            message: "Hello World",
+            className: "abc",
+            isActive: false,
+          };
+        },
+        methods: {
+          btnClick() {
+            this.isActive = !this.isActive;
+          },
+          getClass() {
+            return {
+              active: this.isActive,
+            };
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

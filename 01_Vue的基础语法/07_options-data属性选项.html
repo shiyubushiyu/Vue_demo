@@ -1,0 +1,33 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{message}}</h1>
+      <button @click="changeMessage">点击改变message值</button>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+      Vue.createApp({
+        // data属性是传入一个函数，并且该函数需要返回一个对象
+        // vue2，也可以传入一个对象（推荐是一个函数）
+        // data中返回的对象，会被Vue响应式系统劫持，之后对该对象的修改或者访问都会在劫持中被处理
+        data: function () {
+          return {
+            message: "hello Data",
+          };
+        },
+        /* 定义方法的选项 */
+        methods: {
+          changeMessage() {
+            this.message = "你好呀，李银河";
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

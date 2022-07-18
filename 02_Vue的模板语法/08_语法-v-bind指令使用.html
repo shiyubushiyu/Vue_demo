@@ -1,0 +1,43 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 动态地绑定一个或多个 attribute，或一个组件 prop 到表达式 -->
+      <img v-bind:src="showImageUrl" alt="" />
+      <div>
+        <button @click="switchImageUrl">切换图片</button>
+      </div>
+      <!-- v-bind: 语法糖写法  : -->
+      <a :href="" url>百度一下</a>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            imageUrl1:
+              "http://p1.music.126.net/rBNsFqJJhrg7P2IvmLpATQ==/109951167687677214.jpg",
+            imageUrl2:
+              "http://p1.music.126.net/ye5cMyR90Z5UpG0kzCjtgg==/109951167687714618.jpg",
+            showImageUrl:
+              "http://p1.music.126.net/ye5cMyR90Z5UpG0kzCjtgg==/109951167687714618.jpg",
+            url: "http://www.baidu.com",
+          };
+        },
+        methods: {
+          switchImageUrl() {
+            this.showImageUrl =
+              this.showImageUrl === this.imageUrl1
+                ? this.imageUrl2
+                : this.imageUrl1;
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
