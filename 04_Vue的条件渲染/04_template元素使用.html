@@ -1,0 +1,34 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- template元素可以当做不可见的包裹元素，并且在v-if上使用，但是最终template不会被渲染出来 -->
+      <template class="info" v-if="Object.keys(info).length">
+        <h2>个人信息</h2>
+        <ul>
+          <li>姓名： {{info.name}}</li>
+          <li>年龄： {{info.age}}</li>
+        </ul>
+      </template>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            info: {
+              name: "李银河",
+              age: 19,
+            },
+          };
+        },
+        methods: {},
+      }).mount("#app");
+    </script>
+  </body>
+</html>

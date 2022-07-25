@@ -1,0 +1,74 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .item {
+        display: inline-block;
+        border: 1px solid #e6e6e6;
+        padding: 20px;
+        margin-right: 20px;
+      }
+      .title {
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e6e6e6;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 1. 电影列表进行渲染 -->
+      <div>
+        <h2>电影列表：</h2>
+        <ul>
+          <li v-for="item in movies">{{item}}</li>
+        </ul>
+      </div>
+
+      <!-- 2. 电影列表同时有索引 -->
+      <ul>
+        <li v-for="(item,index) in movies">{{index + 1}} - {{item}}</li>
+      </ul>
+
+      <!-- 3. 遍历数组复杂数据 -->
+      <h2>商品列表</h2>
+      <div class="item" v-for="item in products">
+        <h3 class="title">商品： {{item.name}}</h3>
+        <span>价格： {{item.price}}</span>
+        <p>秒杀： {{item.desc}}</p>
+      </div>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            // 1. movies
+            movies: ["星际穿越", "少年派", "大话西游", "哆啦A梦"],
+            //
+            products: [
+              {
+                name: "华为",
+                price: "999",
+                desc: "只要9.9, 快来抢购",
+              },
+              {
+                name: "小米",
+                price: "100",
+                desc: "只要9.9, 快来抢购",
+              },
+              {
+                name: "苹果",
+                price: "9991",
+                desc: "只要9.9, 快来抢购",
+              },
+            ],
+          };
+        },
+        methods: {},
+      }).mount("#app");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-for可以遍历可迭代对象 -->
+
+      <!-- 遍历对象 -->
+      <div v-for="(value,key,index) in info">{{value}}-{{key}}-{{index}}</div>
+
+      <!-- 遍历数字 -->
+      <div v-for="(item,index) in 10">{{item}}-{{index}}</div>
+
+      <!-- 遍历字符串 -->
+      <div v-for="(item,index) in str">{{item}}-{{index}}</div>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            info: {
+              name: "李银河",
+              age: 18,
+              height: 1.88,
+            },
+            str: "你好呀，李银河",
+          };
+        },
+        methods: {},
+      }).mount("#app");
+    </script>
+  </body>
+</html>

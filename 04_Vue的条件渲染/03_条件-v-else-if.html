@@ -1,0 +1,27 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 根据分数显示不同的成绩评分 -->
+    <div id="app">
+      <h1 v-if="score > 90">优秀</h1>
+      <h1 v-else-if="score > 80">良好</h1>
+      <h1 v-else-if="score > 60">及格</h1>
+      <h1 v-else>不及格</h1>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            score: 40,
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

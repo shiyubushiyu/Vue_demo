@@ -1,0 +1,35 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-show元素无论是否需要显示在浏览器上，它的dom实际都是存在的，只是通过css的display属性进行切换 -->
+      <!-- v-if当条件为false时，其对应的原生压根不会被渲染到dom中 -->
+      <div class="info" v-show="Object.keys(info).length">
+        <h2>个人信息</h2>
+        <ul>
+          <li>姓名： {{info.name}}</li>
+          <li>年龄： {{info.age}}</li>
+        </ul>
+      </div>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            info: {
+              name: "李银河",
+              age: 19,
+            },
+          };
+        },
+        methods: {},
+      }).mount("#app");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- v-if的渲染原理 v-if是惰性的 
+    当条件为false时，其判断的内容完全不会被渲染或者会被销毁掉
+    当条件为true时，才会真正渲染条件快中的内容 -->
+    <div id="app">
+      <!-- v-if="条件" 当条件为真时渲染内容 -->
+      <div class="info" v-if="Object.keys(info).length">
+        <h2>个人信息</h2>
+        <ul>
+          <li>姓名： {{info.name}}</li>
+          <li>年龄： {{info.age}}</li>
+        </ul>
+      </div>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            info: {
+              // name: "李银河",
+              // age: 19,
+            },
+          };
+        },
+        methods: {},
+      }).mount("#app");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        height: 100px;
+        width: 100px;
+        background-color: yellow;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 1. v-on绑定事件监听器 -->
+      <div class="box" v-on:click="divClick"></div>
+
+      <!-- 2. v-on的语法糖 -->
+      <div class="box" @click="divClick"></div>
+
+      <!-- 3. 绑定的方法位置，也可以写成一个表达式 -->
+      <h2>{{counter}}</h2>
+      <button @click="increment">+1</button>
+      <button @click="counter++">+1</button>
+
+      <!-- 4. 绑定其他方法 -->
+      <div class="box" @mousemove="divMousemove"></div>
+
+      <!-- 5. 元素绑定多个事件 -->
+      <div class="box" @click="divClick" @mousemove="divMousemove"></div>
+      <div class="box" v-on="{click: divClick, mousemove: divMousemove}"></div>
+      <div class="box" @="{click: divClick, mousemove: divMousemove}"></div>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            counter: 1,
+          };
+        },
+        methods: {
+          divClick() {
+            console.log("divClick");
+          },
+          increment() {
+            this.counter++;
+          },
+          divMousemove() {
+            console.log("mosemove");
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

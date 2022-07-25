@@ -1,0 +1,28 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 在使用v-for进行列表渲染时，我们通常会给元素或者组件绑定一个key属性 -->
+      <!-- key属性主要用于vue的虚拟dom算法，在新旧nodes对比时辨别VNodes（虚拟节点） -->
+      <!-- 如果不适用key，vue会使用一种最大限度减少动态元素并且尽可能的尝试就地修改/复用相同类型元素的算法 -->
+      <!-- 使用key时，它会基于key的变化重新排列元素顺序，并且会移除/销毁key不存在的元素 -->
+      <div v-for="item in letters" :key="item"></div>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            letters: ["1", "a", "b", "c", "d"],
+          };
+        },
+        methods: {},
+      }).mount("#app");
+    </script>
+  </body>
+</html>
